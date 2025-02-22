@@ -1,20 +1,32 @@
 import { BlogPosts } from 'app/components/posts'
-
+import {GithubActivity} from 'app/components/github'
+import { Suspense } from 'react'
 export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        my portfolio 👻
       </h1>
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        i'm riad zaid, a computer science and engineering student{' '}
+        <a 
+          href="https://www.tudelft.nl/en/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
+        >
+          @tudelft
+        </a>
+        .{' '}i'm passionate about building software that have an impact. i'm eager to learn all there
+        is about software engineering and i'm always looking for new challenges.
       </p>
       <div className="my-8">
         <BlogPosts />
+      </div>
+      <div className='my-8 pt-8'>
+        <Suspense fallback={<div>Loading Github Activity</div>}>
+          <GithubActivity/>
+        </Suspense>
       </div>
     </section>
   )
