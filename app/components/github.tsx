@@ -1,3 +1,4 @@
+"use client"
 import GithubCalendar from 'react-github-calendar';
 
 // const activityTheme: ThemeInput = {
