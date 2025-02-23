@@ -44,6 +44,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             target="_blank"
             href={item.link}
+            key={item.text}
           >
             <ArrowIcon />
             <p className="ml-2 h-7">{item.text}</p>

@@ -1,10 +1,6 @@
 "use client"
 import GithubCalendar from 'react-github-calendar';
 
-// const activityTheme: ThemeInput = {
-
-// }
-
 export function GithubActivity() {
  return (
     <div className="relative -mx-[calc((100vw-100%)/2)] w-screen flex justify-center">
