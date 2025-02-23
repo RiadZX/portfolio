@@ -17,7 +17,7 @@ export default function Page() {
         >
           @tudelft
         </a>
-        .{' '}i'm passionate about building software that have an impact. i'm eager to learn all there
+        .{' '}i'm passionate about building software that has an impact. i'm eager to learn all there
         is about software engineering and i'm always looking for new challenges.
       </p>
       <div className="my-8">
