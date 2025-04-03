@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -86,6 +87,13 @@ function createHeading(level) {
   return Heading
 }
 
+function Gist({ id }) {
+  return (
+      <script src={`https://gist.github.com/${id}.js`} />
+
+  )
+}
+
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -97,7 +105,10 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  Gist,
 }
+
+
 
 export function CustomMDX(props) {
   return (

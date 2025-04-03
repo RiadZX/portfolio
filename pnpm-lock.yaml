@@ -47,6 +47,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-gist:
+        specifier: ^1.2.4
+        version: 1.2.4(react@18.2.0)
       react-github-calendar:
         specifier: ^4.5.5
         version: 4.5.5(react@18.2.0)
@@ -709,6 +712,11 @@ packages:
     resolution: {integrity: sha512-tnjAxG+IkpLephNcePNA7v6F/QpWLH8He65+DmedchDwg162JZqx4NmbXj0mlAYVVEd81OW7aFhmbsScYfiAFQ==}
     peerDependencies:
       react: '>=16.13.1'
+
+  react-gist@1.2.4:
+    resolution: {integrity: sha512-uDgPJ08IJsl/7auK3CS53JKGC1P/X7tNCzo9k0r6D/5l+ilsxE1+SAaylJCh0aeyZoJOoxQikKU+MHsAvA9iFw==}
+    peerDependencies:
+      react: 0.14.x || ^15.0.0-rc || ^16.0.0-rc || ^17.0.0-rc
 
   react-github-calendar@4.5.5:
     resolution: {integrity: sha512-GUw+c5DKFUfJtL1p6rqolPPx2MTPKvQVUrYw+2YGXp3JhNQBEgOxDXoC2WC2diDLhI3XOA+kTS/lLvp3Ftd42A==}
@@ -1638,6 +1646,10 @@ snapshots:
   react-error-boundary@5.0.0(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.26.9
+      react: 18.2.0
+
+  react-gist@1.2.4(react@18.2.0):
+    dependencies:
       react: 18.2.0
 
   react-github-calendar@4.5.5(react@18.2.0):

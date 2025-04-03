@@ -4,6 +4,8 @@ publishedAt: '2025-04-03'
 summary: 'Explaining how to calculate the price of a pumpfun amm token to use in transactions'
 ---
 
+
+
 # Introduction
 
 Pumpfun amm recently launched (at the time of writing) and it is pumpfuns take on an automated market maker.
@@ -66,14 +68,14 @@ If you are buying tokens with solana, then your quote amount in lamports is the 
 this javascript implementation is from the pumpfun amm sdk on npm : [source code](https://www.npmjs.com/package/@pumpfun/amm-sdk)
 
 ```javascript
-// 2) Calculate total fee basis points and denominator
+// 1) Calculate total fee basis points and denominator
 const totalFeeBps = lpFeeBps.add(protocolFeeBps);
 const denominator = new BN(10_000).add(totalFeeBps);
 
-// 3) Calculate effective quote amount
+// 2) Calculate effective quote amount
 const effectiveQuote = quote.mul(new BN(10_000)).div(denominator);
 
-// 4) Calculate the base tokens received using effectiveQuote
+// 3) Calculate the base tokens received using effectiveQuote
 //    base_amount_out = floor(base_reserve * effectiveQuote / (quote_reserve + effectiveQuote))
 const numerator = baseReserve.mul(effectiveQuote);
 const denominatorEffective = quoteReserve.add(effectiveQuote);
@@ -84,7 +86,7 @@ if (denominatorEffective.isZero()) {
 
 const baseAmountOut = numerator.div(denominatorEffective);
 
-// 5) Calculate maxQuote with slippage
+// 4) Calculate maxQuote with slippage
 //    If slippage=1 => factor = (1 + 1/100) = 1.01
 const precision = new BN(1_000_000_000); // For slippage calculations
 const slippageFactorFloat = (1 + slippage / 100) * 1_000_000_000;
@@ -99,8 +101,8 @@ const maxQuote = quote.mul(slippageFactor).div(precision);
 this golang implementation was done by me. which is a port of the javascript/typescript code above.
 
 ```go
-// Calculate total fee basis points and denominator
-lpFeeBps := big.NewInt(int64(ammEvent.Lp_fee_basis_points))
+// Calculate total fee basis points and denominator 
+lpFeeBps := big.NewInt(int64(ammEvent.Lp_fee_basis_points)) 
 protocolFeeBps := big.NewInt(int64(ammEvent.Protocol_fee_basis_points))
 totalFeeBps := new(big.Int).Add(lpFeeBps, protocolFeeBps)
 denominator := new(big.Int).Add(big.NewInt(10000), totalFeeBps)
