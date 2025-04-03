@@ -1,0 +1,120 @@
+---
+title: 'The math behind pumpfun amm'
+publishedAt: '2025-04-03'
+summary: 'Explaining how to calculate the price of a pumpfun amm token to use in transactions'
+---
+
+# Introduction
+
+Pumpfun amm recently launched (at the time of writing) and it is pumpfuns take on an automated market maker.
+As a developer of a solana pumpfun bot, one of the key challenges of building transactions is figuring out how the prices are calculated.
+This post will explain how to calculate the price of a pumpfun amm token so you can use it in your transactions.
+
+# Maths
+
+Define `quote_amount_in` as the amount of lamport you want to swap for pumpfun tokens. (need to convert to lamport todo.)
+
+### Pumpfun AMM Token Price Calculation
+
+## Definitions
+- Let **lpFeeBps** be the liquidity provider fee in basis points.
+- Let **protocolFeeBps** be the protocol fee in basis points.
+- Let **QuoteAmountIn** be the amount of quote tokens being swapped.
+- Let **PoolBaseTokenReserves** be the reserves of the base token in the pool.
+- Let **PoolQuoteTokenReserves** be the reserves of the quote token in the pool.
+
+## Calculations
+1. **Total Fee Basis Points**:
+   ``` 
+   totalFeeBps = lpFeeBps + protocolFeeBps
+   ```
+   This step calculates the total fee (in basis points) by summing the liquidity provider fee and the protocol fee. Basis points are used to represent percentages, where 1 basis point equals 0.01%.
+
+2. **Denominator for Effective Quote Calculation**:
+   ```
+   denominator = 10000 + totalFeeBps
+   ```
+   The denominator is calculated by adding the total fee (in basis points) to 10,000 (the base value representing 100%). This value will be used to adjust the quote amount to account for fees.
+
+3. **Effective Quote Amount**:
+   ```
+   effectiveQuote = (QuoteAmountIn * 10000) / denominator
+   ```
+   The effective quote amount is the adjusted amount of quote tokens after accounting for the fees. This is done by scaling the input quote amount by 10,000 and dividing it by the denominator calculated in the previous step.
+
+4. **Base Tokens Received**:
+   ```
+   numerator = PoolBaseTokenReserves * effectiveQuote
+   denominatorEffective = PoolQuoteTokenReserves + effectiveQuote
+   ```
+   The numerator represents the product of the base token reserves and the effective quote amount. The denominatorEffective is the sum of the quote token reserves and the effective quote amount. These values are used to calculate the amount of base tokens received.
+
+   If `denominatorEffective = 0`, the pool would be depleted, and the calculation cannot proceed.
+
+   Otherwise:
+   ```
+   baseAmountOut = numerator / denominatorEffective
+   ```
+   The final amount of base tokens received (`baseAmountOut`) is calculated by dividing the numerator by the denominatorEffective. This represents the number of base tokens you will receive for the given input quote tokens.
+
+# Implementation
+
+## javascript 🦕
+
+```javascript
+// 2) Calculate total fee basis points and denominator
+const totalFeeBps = lpFeeBps.add(protocolFeeBps);
+const denominator = new BN(10_000).add(totalFeeBps);
+
+// 3) Calculate effective quote amount
+const effectiveQuote = quote.mul(new BN(10_000)).div(denominator);
+
+// 4) Calculate the base tokens received using effectiveQuote
+//    base_amount_out = floor(base_reserve * effectiveQuote / (quote_reserve + effectiveQuote))
+const numerator = baseReserve.mul(effectiveQuote);
+const denominatorEffective = quoteReserve.add(effectiveQuote);
+
+if (denominatorEffective.isZero()) {
+    throw new Error("Pool would be depleted; denominator is zero.");
+}
+
+const baseAmountOut = numerator.div(denominatorEffective);
+
+// 5) Calculate maxQuote with slippage
+//    If slippage=1 => factor = (1 + 1/100) = 1.01
+const precision = new BN(1_000_000_000); // For slippage calculations
+const slippageFactorFloat = (1 + slippage / 100) * 1_000_000_000;
+const slippageFactor = new BN(Math.floor(slippageFactorFloat));
+
+// maxQuote = quote * slippageFactor / 1e9
+const maxQuote = quote.mul(slippageFactor).div(precision);
+```
+
+## golang 🦫
+
+```go
+// Calculate total fee basis points and denominator
+lpFeeBps := big.NewInt(int64(ammEvent.Lp_fee_basis_points))
+protocolFeeBps := big.NewInt(int64(ammEvent.Protocol_fee_basis_points))
+totalFeeBps := new(big.Int).Add(lpFeeBps, protocolFeeBps)
+denominator := new(big.Int).Add(big.NewInt(10000), totalFeeBps)
+
+// Calculate effective quote amount
+effectiveQuote := new(big.Int).Mul(big.NewInt(int64(QuoteAmountIn)), big.NewInt(10000))
+effectiveQuote = effectiveQuote.Div(effectiveQuote, denominator)
+
+// Calculate the base tokens received using effectiveQuote
+numerator := new(big.Int).Mul(big.NewInt(int64(ammEvent.Pool_base_token_reserves)), effectiveQuote)
+denominatorEffective := new(big.Int).Add(big.NewInt(int64(ammEvent.Pool_quote_token_reserves)), effectiveQuote)
+
+if denominatorEffective.Cmp(big.NewInt(0)) == 0 {
+    return nil, errors.New("Pool would be depleted; denominator is zero.")
+}
+
+baseAmountOut := new(big.Int).Div(numerator, denominatorEffective).Uint64()
+```
+
+
+## Conclusion
+This is the end of the test blog post.
+
