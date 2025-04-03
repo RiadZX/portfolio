@@ -99,6 +99,34 @@ const maxQuote = quote.mul(slippageFactor).div(precision);
 ## golang 🦫
 
 this golang implementation was done by me. which is a port of the javascript/typescript code above.
+I have an ammEvent struct which has the following fields, I extract this data from the transaction logs:
+This just the buy event which is found in the logs.
+```go
+type AMMBuyEvent struct {
+    Identifier                           [8]byte
+    Timestamp                            int64
+    Base_amount_out                      uint64
+    Max_quote_amount_in                  uint64
+    User_base_token_reserves             uint64
+    User_quote_token_reserves            uint64
+    Pool_base_token_reserves             uint64
+    Pool_quote_token_reserves            uint64
+    Quote_amount_in                      uint64
+    Lp_fee_basis_points                  uint64
+    Lp_fee                               uint64
+    Protocol_fee_basis_points            uint64
+    Protocol_fee                         uint64
+    Quote_amount_in_with_lp_fee          uint64
+    User_quote_amount_in                 uint64
+    Pool                                 solana.PublicKey
+    User                                 solana.PublicKey
+    User_base_token_account              solana.PublicKey
+    User_quote_token_account             solana.PublicKey
+    Protocol_fee_recipient               solana.PublicKey
+    Protocol_fee_recipient_token_account solana.PublicKey
+}
+```
+And this is the golang code to calculate the base amount out:
 
 ```go
 // Calculate total fee basis points and denominator 
