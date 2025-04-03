@@ -52,6 +52,9 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
+      <head>
+        <meta name="google-site-verification" content="0g_TewX8AERqWGD70qCUiMrtOp-7gMYdLIw33k3tOQE" />
+      </head>
       <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto bg-white/50 dark:bg-black/50 backdrop-blur-sm">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />
