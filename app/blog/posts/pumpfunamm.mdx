@@ -28,14 +28,15 @@ If you are buying tokens with solana, then your quote amount in lamports is the 
 2️⃣ Let **protocolFeeBps** be the protocol fee in basis points. \
 3️⃣ Let **QuoteAmountIn** be the amount of quote tokens being swapped. If you are buying with sol, this would for example be the amount of sol you are sending **in lamports**. \
 4️⃣ Let **PoolBaseTokenReserves** be the reserves of the base token in the pool. \
-5️⃣ Let **PoolQuoteTokenReserves** be the reserves of the quote token in the pool. \
+5️⃣ Let **PoolQuoteTokenReserves** be the reserves of the quote token in the pool.
 
 ### How to find lpFeeBps and protocolFeeBps
 
 Those are fixed values for most of the time, at time of writing the fees are as following, and will likely stay like this. Make sure to check it out once a while if you will be hardcoding them.
-To find it, go to solscan and find a PumpFun Buy IX. [Example TX](https://solscan.io/tx/4YTsR11NZoM9ejDFdMegyrPkifJiby9hu6bUQ69NRYAe5dR5FEhYd3f7UGS5h1KwmKuLSEXnwLknY8JFuExNoueo)
+To find it, go to solscan and find a PumpFun Buy IX. 
+[Example TX](https://solscan.io/tx/4YTsR11NZoM9ejDFdMegyrPkifJiby9hu6bUQ69NRYAe5dR5FEhYd3f7UGS5h1KwmKuLSEXnwLknY8JFuExNoueo)
 Check out the following image to see where to find them:
-![Solscan PumpFun Buy IX Example](https://github.com/RiadZX/portfolio/tree/main/public/blog/fee_example.png)
+![Solscan PumpFun Buy IX Example](https://github.com/RiadZX/portfolio/blob/main/public/blog/fee_example.png?raw=true)
 
 ## Calculations
 1. **Total Fee Basis Points**:
