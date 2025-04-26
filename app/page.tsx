@@ -1,6 +1,7 @@
 import { BlogPosts } from 'app/components/posts'
 import {GithubActivity} from 'app/components/github'
 import { Suspense } from 'react'
+import Comments from './components/comments'
 export default function Page() {
   return (
     <section>
@@ -28,6 +29,11 @@ export default function Page() {
           <GithubActivity/>
         </Suspense>
       </div>
+      <div>
+        <h2 className="pt-8 mb-8 text-2xl font-semibold tracking-tighter text-center">Say hi 🙂👋</h2>
+      <Comments/>
+      </div>
+      
     </section>
   )
 }
