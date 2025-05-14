@@ -35,7 +35,7 @@ export default function Page() {
       </div>
       <div className="mb-6 flex justify-center">
         <a
-          href="https://9drg4tfnx0.ufs.sh/f/QBZwS7j5aSHoBXl3R0EmtvC0NcgduaiDfVWrQLy6P3bqzpn7"
+          href="https://9drg4tfnx0.ufs.sh/f/QBZwS7j5aSHojJMxEAD5w6JOs5IMVYmv2h8Ery9eUH40uBzQ"
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
