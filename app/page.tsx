@@ -33,16 +33,6 @@ export default function Page() {
           <GithubActivity/>
         </Suspense>
       </div>
-      <div className="mb-6 flex justify-center">
-        <a
-          href="https://9drg4tfnx0.ufs.sh/f/QBZwS7j5aSHojJMxEAD5w6JOs5IMVYmv2h8Ery9eUH40uBzQ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
-        >
-          Download Resume
-        </a>
-      </div>
       <div>
         <h2 className="pt-8 mb-8 text-2xl font-semibold tracking-tighter text-center">Say hi 🙂👋</h2>
       <Comments/>
