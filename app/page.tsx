@@ -82,7 +82,7 @@ export default function Page() {
           </ul>
         </div>
         <div className="space-y-2">
-          <h2 className="text-lg font-medium tracking-tight">Experience</h2>
+          <h2 className="text-lg font-medium tracking-tight">Notable Experiences</h2>
           <ul className="space-y-3 text-neutral-700 dark:text-neutral-300">
             {experiences.map((item) => (
               <li
@@ -109,7 +109,7 @@ export default function Page() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-lg font-medium tracking-tight">Writing</h2>
+        <h2 className="text-lg font-medium tracking-tight">Writing & Notes</h2>
         <BlogPosts />
       </section>
 

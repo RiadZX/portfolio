@@ -1,7 +1,6 @@
 import "./global.css"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Source_Serif_4, JetBrains_Mono } from "next/font/google"
 import { Navbar } from "./components/nav"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -36,6 +35,16 @@ export const metadata: Metadata = {
   },
 }
 
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
+
 const cx = (...classes) => classes.filter(Boolean).join(" ")
 
 export default function RootLayout({
@@ -49,8 +58,8 @@ export default function RootLayout({
       lang="en"
       className={cx(
         "text-[#e6f5ec] bg-[#07100b]",
-        GeistSans.variable,
-        GeistMono.variable
+        sourceSerif.variable,
+        jetbrainsMono.variable
       )}
     >
       <head>
