@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: #1f6b4f;
+  color: #f4fff9;
 }
 
 :root {
@@ -15,6 +15,8 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
+  --accent: #8fe0b1;
+  --accent-muted: #2a6a4b;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +29,20 @@
   html {
     color-scheme: dark;
   }
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: #b6f2cf;
+}
+
+h1,
+h2,
+h3 {
+  color: #9fe8bf;
 }
 
 html {

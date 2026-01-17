@@ -1,43 +1,146 @@
-import { BlogPosts } from 'app/components/posts'
-import {GithubActivity} from 'app/components/github'
-import { Suspense } from 'react'
-import Comments from './components/comments'
-import CertificatesExperiencesSection from './components/CertificatesExperiencesSection'
+import { BlogPosts } from "app/components/posts"
+
+const education = [
+  {
+    school: "TU Delft",
+    program: "Computer Science and Engineering (BSc)",
+    period: "2023–present",
+    description: "Computer science and engineering with a focus on data science.",
+  },
+  {
+    school: "VU Amsterdam",
+    program: "Applied Econometrics (Minor)",
+    period: "September 2025–January 2026",
+    description: "Applied econometrics minor.",
+  },
+]
+
+const experiences = [
+  {
+    role: "Teaching Assistant for Data Mining",
+    company: "Technical University of Delft",
+    period: "November 2025–present",
+    description:
+      "Taught data mining topics, supported assignments, and assisted with grading assignments.",
+  },
+  {
+    role: "Freelance Rust Solana Developer",
+    company: "Freelance",
+    period: "July 2025–December 2025",
+    description:
+      "Built a copytrading bot with risk management and strategy systems.",
+  },
+  {
+    role: "Founder",
+    company: "Zed Trading",
+    period: "July 2024–December 2025",
+    description:
+      "Built automated trading software on Solana, it is one of the fastest bots on the market. Gained deep experience and knowledge on the workings of the Solana blockchain and it's ecosystem. Also learned how to deal with customers :D",
+  },
+  {
+    role: "Software Engineer Intern",
+    company: "Superconnectors",
+    period: "April 2025–June 2025",
+    description: "Improved UI/UX and introduced research-backed gamification.",
+  },
+]
 
 export default function Page() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        my portfolio 👻
-      </h1>
-      <p className="mb-4">
-        i'm riad zaid, a computer science and engineering student{' '}
-        <a 
-          href="https://www.tudelft.nl/en/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-        >
-          @tudelft
-        </a>
-        .{' '}i'm passionate about building software that has an impact. i'm eager to learn all there
-        is about software engineering and i'm always looking for new challenges.
-      </p>
-      <CertificatesExperiencesSection />
-      <h2 className="mb-8 text-2xl font-semibold tracking-tighter text-center">Blog Posts</h2>
-      <div className="my-8">
+    <section className="space-y-10">
+      <header className="space-y-3">
+        <h1 className="text-2xl font-medium tracking-tight">Riad Zaid</h1>
+        <p className="text-neutral-700 dark:text-neutral-300">
+          
+        </p>
+      </header>
+
+      <section className="space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-lg font-medium tracking-tight">Education</h2>
+          <ul className="space-y-3 text-neutral-700 dark:text-neutral-300">
+            {education.map((item) => (
+              <li
+                key={`${item.school}-${item.program}`}
+                className="space-y-1"
+              >
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <span>
+                    {item.school} — {item.program}
+                  </span>
+                  <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                    {item.period}
+                  </span>
+                </div>
+                {item.description ? (
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    {item.description}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-lg font-medium tracking-tight">Experience</h2>
+          <ul className="space-y-3 text-neutral-700 dark:text-neutral-300">
+            {experiences.map((item) => (
+              <li
+                key={`${item.company}-${item.role}-${item.period}`}
+                className="space-y-1"
+              >
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                  <span>
+                    {item.role}, {item.company}
+                  </span>
+                  <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                    {item.period}
+                  </span>
+                </div>
+                {item.description ? (
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    {item.description}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-lg font-medium tracking-tight">Writing</h2>
         <BlogPosts />
-      </div>
-      <div className='my-8 pt-8'>
-        <Suspense fallback={<div>Loading Github Activity</div>}>
-          <GithubActivity/>
-        </Suspense>
-      </div>
-      <div>
-        <h2 className="pt-8 mb-8 text-2xl font-semibold tracking-tighter text-center">Say hi 🙂👋</h2>
-      <Comments/>
-      </div>
-      
+      </section>
+
+      <section className="space-y-2">
+        <h2 className="text-lg font-medium tracking-tight">Contact</h2>
+        <p className="text-neutral-700 dark:text-neutral-300">
+          Reach me on{" "}
+          <a
+            href="https://www.linkedin.com/in/riadzaid/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600"
+          >
+            LinkedIn
+          </a>{" "}
+          or{" "}
+          <a
+            href="https://github.com/riadzx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600"
+          >
+            GitHub
+          </a>{" "}
+          ,{" "}
+          or send me an email at <a
+            href="mailto:riadzaid@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer" className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600">riadzaid@gmail.com</a>.
+        </p>
+      </section>
     </section>
   )
 }
