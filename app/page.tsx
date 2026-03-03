@@ -50,7 +50,7 @@ export default function Page() {
     <section className="space-y-10">
       <header className="space-y-3">
         <h1 className="text-2xl font-medium tracking-tight">Riad Zaid</h1>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-neutral-300">
           
         </p>
       </header>
@@ -58,7 +58,7 @@ export default function Page() {
       <section className="space-y-6">
         <div className="space-y-2">
           <h2 className="text-lg font-medium tracking-tight">Education</h2>
-          <ul className="space-y-3 text-neutral-700 dark:text-neutral-300">
+          <ul className="space-y-3 text-neutral-300">
             {education.map((item) => (
               <li
                 key={`${item.school}-${item.program}`}
@@ -68,12 +68,12 @@ export default function Page() {
                   <span>
                     {item.school} — {item.program}
                   </span>
-                  <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <span className="text-sm text-neutral-400">
                     {item.period}
                   </span>
                 </div>
                 {item.description ? (
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  <p className="text-sm text-neutral-400">
                     {item.description}
                   </p>
                 ) : null}
@@ -83,7 +83,7 @@ export default function Page() {
         </div>
         <div className="space-y-2">
           <h2 className="text-lg font-medium tracking-tight">Notable Experiences</h2>
-          <ul className="space-y-3 text-neutral-700 dark:text-neutral-300">
+          <ul className="space-y-3 text-neutral-300">
             {experiences.map((item) => (
               <li
                 key={`${item.company}-${item.role}-${item.period}`}
@@ -93,12 +93,12 @@ export default function Page() {
                   <span>
                     {item.role}, {item.company}
                   </span>
-                  <span className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <span className="text-sm text-neutral-400">
                     {item.period}
                   </span>
                 </div>
                 {item.description ? (
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  <p className="text-sm text-neutral-400">
                     {item.description}
                   </p>
                 ) : null}
@@ -115,13 +115,13 @@ export default function Page() {
 
       <section className="space-y-2">
         <h2 className="text-lg font-medium tracking-tight">Contact</h2>
-        <p className="text-neutral-700 dark:text-neutral-300">
+        <p className="text-neutral-300">
           Reach me on{" "}
           <a
             href="https://www.linkedin.com/in/riadzaid/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600"
+            className="underline underline-offset-4 decoration-neutral-600"
           >
             LinkedIn
           </a>{" "}
@@ -130,7 +130,7 @@ export default function Page() {
             href="https://github.com/riadzx"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600"
+            className="underline underline-offset-4 decoration-neutral-600"
           >
             GitHub
           </a>{" "}
@@ -138,7 +138,7 @@ export default function Page() {
           or send me an email at <a
             href="mailto:riadzaid@gmail.com"
             target="_blank"
-            rel="noopener noreferrer" className="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600">riadzaid@gmail.com</a>.
+            rel="noopener noreferrer" className="underline underline-offset-4 decoration-neutral-600">riadzaid@gmail.com</a>.
         </p>
       </section>
     </section>

@@ -19,12 +19,12 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-neutral-200 pt-6 text-sm text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
+    <footer className="mt-16 border-t border-neutral-800 pt-6 text-sm text-neutral-400">
       <nav className="flex flex-wrap gap-x-4 gap-y-2">
         {footerLinks.map((item) => (
           <a
             key={item.text}
-            className="transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+            className="transition-colors hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href={item.link}

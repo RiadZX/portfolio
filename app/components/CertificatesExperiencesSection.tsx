@@ -28,14 +28,14 @@ export default function CertificatesExperiencesSection() {
       <h2 className="mb-8 text-2xl font-semibold tracking-tighter text-center">Certificates & Experiences</h2>
       <div className="grid gap-6 md:grid-cols-2">
         {items.map((item, idx) => (
-          <div key={idx} className="flex items-center bg-neutral-50 dark:bg-neutral-900 rounded-lg shadow-sm p-4 border border-neutral-200 dark:border-neutral-800">
+          <div key={idx} className="flex items-center bg-neutral-900 rounded-lg shadow-sm p-4 border border-neutral-800">
             <div className="flex-shrink-0 w-16 h-16 relative mr-4">
               <Image src={item.image} alt={item.title} fill className="object-contain rounded-md" />
             </div>
             <div>
               <div className="text-sm text-neutral-500 mb-1">{item.type}</div>
               <div className="font-semibold text-lg mb-1">{item.title}</div>
-              <div className="text-neutral-700 dark:text-neutral-300 text-sm">{item.description}</div>
+              <div className="text-neutral-300 text-sm">{item.description}</div>
             </div>
           </div>
         ))}
