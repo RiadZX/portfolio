@@ -57,7 +57,7 @@ export default function RootLayout({
       suppressHydrationWarning={true}
       lang="en"
       className={cx(
-        "text-[#e6f5ec] bg-[#07100b]",
+        "dark text-[#e6f5ec] bg-[#07100b]",
         sourceSerif.variable,
         jetbrainsMono.variable
       )}
